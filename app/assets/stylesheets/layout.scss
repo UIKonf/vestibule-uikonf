@@ -10,13 +10,27 @@ header {
       font-size: 6em;
       font-weight: 400;
       margin: 0;
-      color: $highlight-colour;
+      color: $heading-colour;
+      text-shadow: $highlight-colour 0px 0px 4px;
 
       a:hover {
         text-decoration: none;
       }
+
+      a:link, a:visited {
+        color: $heading-colour;
+      }
     }
   }
+}
+.nav > li > a:hover {
+  text-decoration: none;
+  background-color: $highlight-nav-background-colour;
+}
+.nav-pills > .active > a,
+.nav-pills > .active > a:hover {
+  color: $white;
+  background-color: $active-nav-background-colour;
 }
 
 #content {
