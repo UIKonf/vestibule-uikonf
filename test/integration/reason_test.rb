@@ -5,6 +5,7 @@ class ReasonTest < IntegrationTestCase
     setup do
       @user = FactoryGirl.create(:user, :signup_reason => nil)
       sign_in @user
+      visit user_path(@user)
     end
 
     should "tell the user that they haven't stated a reason for siging up" do
