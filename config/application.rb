@@ -47,6 +47,7 @@ module Vestibule
 
     config.assets.enabled = true
     config.assets.version = '1.0'
+    config.assets.initialize_on_precompile = false
 
     config.middleware.use OmniAuth::Builder do
       provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'user:email'
