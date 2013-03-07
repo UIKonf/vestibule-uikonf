@@ -33,12 +33,14 @@ module ApplicationHelper
   end
 
   def avatar_url(user, bigger=false)
-    if user.email.present?
-      email_address = user.email.downcase
-      hash = Digest::MD5.hexdigest(email_address)
-      image_src = "http://www.gravatar.com/avatar/#{hash}"
-    else
-    end
+    hash =
+      if user.email.present?
+        email_address = user.email.downcase
+        Digest::MD5.hexdigest(email_address)
+      else
+        '0'
+      end
+    "http://www.gravatar.com/avatar/#{hash}"
   end
 
   def markdown(text)
@@ -101,6 +103,26 @@ module ApplicationHelper
     class_name = "proposal"
     class_name += " withdrawn" if proposal.withdrawn?
     content_tag(:div, :class => class_name, &block)
+  end
+
+  def proposal_update_information(proposal)
+    result = "updated #{time_ago_in_words proposal.updated_at} ago"
+    if proposal.suggestions.any?
+      suggestion = proposal.suggestions.latest.first
+      result += "; latest suggestion #{time_ago_in_words(suggestion.updated_at)} ago"
+    end
+    result
+  end
+
+  def proposal_manipulation_actions(proposal, user)
+    if proposal.proposed_by?(user) && (can?(:change, :proposal) || can?(:withdraw, :proposal))
+      content_tag(:ul, class: 'nav nav-pills') do
+        out = []
+        out << content_tag(:li, link_to('Edit proposal', edit_proposal_path(@proposal), class: 'btn btn-primary')) if can?(:change, :proposal)
+        out << content_tag(:li, button_to('Withdraw proposal', withdraw_proposal_path(@proposal), class: 'btn btn-danger')) if can?(:withdraw, :proposal)
+        out.join("\n").html_safe
+      end
+    end
   end
 
   protected

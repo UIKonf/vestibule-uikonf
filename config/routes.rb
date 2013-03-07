@@ -6,7 +6,7 @@ Vestibule::Application.routes.draw do
       post :withdraw
     end
   end
-  #resources :selections, :only => [:index, :create, :destroy]
+  resources :selections, :only => [:index, :create, :destroy]
 
   match "/about", :to => "home#about", :as => "about"
   match "/anonymous-proposals", :to => "home#anonymous_proposals", :as => "anonymous_proposals"

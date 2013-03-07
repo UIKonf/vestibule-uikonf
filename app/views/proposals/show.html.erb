@@ -4,13 +4,8 @@
       <%= proposal_div(@proposal) do %>
         <%= page_title @proposal.title %>
 
-        <% if @proposal.proposed_by?(current_user) %>
-          <ul class="nav nav-pills">
-            <li><%= link_to "Edit proposal", edit_proposal_path(@proposal), class: "btn btn-primary" %></li>
-            <li><%= button_to "Withdraw proposal", withdraw_proposal_path(@proposal), class: "btn btn-danger" %></li>
-          </ul>
-        <% end %>
-        <p class="age">updated <%= time_ago_in_words @proposal.updated_at %> ago</p>
+        <%= proposal_manipulation_actions(@proposal, current_user) %>
+        <p class="age"><%= proposal_update_information @proposal %></p>
 
         <% if @proposal.withdrawn? %><h2 class="withdrawl_explanation">This proposal has been withdrawn...</h2><% end %>
         <div class="description"><%= markdown @proposal.description %></div>
@@ -21,8 +16,12 @@
   <div class="span5 offset1">
     <div id="suggestions">
       <h2>Suggestions</h2>
-      <% if user_signed_in? %>
-        <p>Help develop this into a good proposal by asking questions about anything that isn't clear, making suggestions about what to include or avoid, and asking for more detail or clarifications.</p>
+      <% if user_signed_in? && can?(:make, :suggestion) %>
+        <% if current_user == @proposal.proposer %>
+          <p>You can respond to suggestions here. As the proposer of the talk, your identity will be masked from other visitors.</p>
+        <% else %>
+          <p>Help develop this into a good proposal by asking questions about anything that isn't clear, making suggestions about what to include or avoid, and asking for more detail or clarifications.</p>
+        <% end %>
 
         <%= simple_form_for [@proposal, @suggestion] do |f| %>
           <% if notification = f.error_notification %>
@@ -40,12 +39,15 @@
         <% @proposal.suggestions.latest.each do |suggestion| %>
           <%= content_tag_for(:li, suggestion) do %>
             <p class="author">
-              <% if suggestion.author == @proposal.proposer && current_user != @proposal.proposer %>
-                The proposal author
+              <% if suggestion.author == @proposal.proposer %>
+                <% if current_user == @proposal.proposer %>
+                  You respond
+                <% else %>
+                  The proposal author responds
+                <% end %>
               <% else %>
-                <%= render 'shared/user', :user => suggestion.author %>
+                <%= render 'shared/user', :user => suggestion.author %> suggests
               <% end %>
-              suggests
               <span class="age"><%= time_ago_in_words suggestion.updated_at %> ago</span>
             </p>
             <section class="body"><%= markdown suggestion.body %></section>
