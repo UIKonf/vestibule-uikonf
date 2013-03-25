@@ -1,33 +1,39 @@
+<% if !can?(:see, :agenda) && !user_signed_in? %>
+  <p>The agenda isn't visible yet; why not <%= link_to "sign in", "/auth/github" %> to cast your votes?</p>
+<% end %>
+
 <% if can?(:see, :agenda) %>
-  <h1>Top 10 Proposals</h1>
+  <div class="agenda">
+    <h1>Chosen Proposals</h1>
 
-  <ol id="the_chosen_ones">
-    <% @top_proposals.each do |popular_proposal|
-      votes, proposal = *popular_proposal
-      %>
-      <%= content_tag_for :li, proposal, :class => 'top' do %>
-        <%= link_to proposal.title, proposal %> <span>(<%= votes %> votes)</span>
-      <% end %>
-    <% end %>
+    <p>There will be <strong>6</strong> community-chosen talks given at UIKonf.</p>
 
-    <% @next_proposals.each do |popular_proposal|
-      votes, proposal = *popular_proposal
-      %>
-      <%= content_tag_for :li, proposal, :class => 'next' do %>
-        <%= link_to proposal.title, proposal %> <span>(<%= votes %> votes)</span>
+    <ol id="the_chosen_ones">
+      <% @top_proposals.each do |popular_proposal|
+        votes, proposal = *popular_proposal
+        %>
+        <%= content_tag_for :li, proposal, :class => 'top' do %>
+          <%= link_to proposal.title, proposal %><%= show_proposal_author_if_allowed(proposal) %> <span>(<%= votes %> votes)</span>
+        <% end %>
       <% end %>
-    <% end %>
-  </ol>
+    </ol>
+  </div>
 <% end %>
 
 <% if user_signed_in? %>
   <h1>Your selections</h1>
 
+  <% unless can?(:make, :selection) %>
+    <p>Here are the selections you made:</p>
+  <% end %>
+
   <ul id="selections">
     <% current_user.selections.each do |selection| %>
       <%= content_tag_for :li, selection.proposal, 'selection' do %>
-        <%= button_to('Deselect', selection, method: :delete, class: "btn") if can?(:make, :selection) %>
-        <%= link_to selection.proposal.title, selection.proposal %>
+        <% if can?(:make, :selection) %>
+          <%= button_to('Deselect', selection, method: :delete, class: "btn") %>
+        <% end %>
+        <%= link_to selection.proposal.title, selection.proposal %><%= show_proposal_author_if_allowed(selection.proposal) %>
       <% end %>
     <% end %>
   </ul>
@@ -46,7 +52,7 @@
           <%= form.hidden_field :proposal_id, value: proposal.id %>
           <%= form.submit "Select", disabled: (remaining == 0 ? 'disabled' : nil), class: "btn" %>
         <% end %>
-        <%= link_to proposal.title, proposal_path(proposal) %>
+        <%= link_to proposal.title, proposal_path(proposal) %><%= show_proposal_author_if_allowed(proposal) %>
       <% end %>
     <% end %>
     </ul>
