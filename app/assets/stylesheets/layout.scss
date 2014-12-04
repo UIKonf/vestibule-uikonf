@@ -14,11 +14,10 @@ header {
     margin-bottom: 2em;
 
     h1 {
-      line-height: 0.75em;
+      line-height: 1em;
       font-family: $alternate-font-stack;
-      font-size: 6em;
-      font-weight: 400;
-      margin: 0;
+      font-size: 3em;
+      margin: (1.5em/3) 0 (1.5em/6) 0;
       color: $heading-colour;
 
       a:hover {
@@ -48,10 +47,9 @@ header {
     margin-bottom: 2em;
 
     h1 {
-      font-size: 3em;
-      line-height: (1.5em/2);
+      font-size: 2em;
+      line-height: 1em;
       font-family: $alternate-font-stack;
-      font-weight: bold;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
