@@ -15,12 +15,11 @@ header {
 
     h1 {
       line-height: 0.75em;
-      font-family: "Antenna Extra Cond", Arial, sans-serif;
+      font-family: $alternate-font-stack;
       font-size: 6em;
       font-weight: 400;
       margin: 0;
       color: $heading-colour;
-      text-shadow: $highlight-colour 0px 0px 4px;
 
       a:hover {
         text-decoration: none;
@@ -51,7 +50,7 @@ header {
     h1 {
       font-size: 3em;
       line-height: (1.5em/2);
-      font-family: Arial, sans-serif;
+      font-family: $alternate-font-stack;
       font-weight: bold;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
