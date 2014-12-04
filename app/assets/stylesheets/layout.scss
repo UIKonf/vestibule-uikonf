@@ -7,6 +7,10 @@ $content-background-color : #FEFEFE;
 $font-stack           : "ff-bau-web", sans-serif;
 $alternate-font-stack : "Antenna Extra Cond", sans-serif;
 
+html {
+    font-family: $font-stack;
+}
+
 header {
   margin: 1em 0 0 0;
 
