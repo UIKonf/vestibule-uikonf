@@ -1,3 +1,12 @@
+$text-color           : #444444;
+$background-color     : #F0F0F0;
+$link-color           : #499DF9;
+
+$content-background-color : #FEFEFE;
+
+$font-stack           : "ff-bau-web", sans-serif;
+$alternate-font-stack : "Antenna Extra Cond", sans-serif;
+
 header {
   margin: 1em 0 0 0;
 
@@ -6,7 +15,7 @@ header {
 
     h1 {
       line-height: 0.75em;
-      font-family: 'Londrina Sketch', Arial, sans-serif;
+      font-family: "Antenna Extra Cond", Arial, sans-serif;
       font-size: 6em;
       font-weight: 400;
       margin: 0;
