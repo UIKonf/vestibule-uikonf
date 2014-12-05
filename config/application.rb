@@ -27,6 +27,7 @@ module Vestibule
     config.assets.version = '1.0'
     # as recommended by heroku (https://devcenter.heroku.com/articles/rails-asset-pipeline#troubleshooting)
     config.assets.initialize_on_precompile = false
+    config.assets.precompile << '*.js'
 
     config.middleware.use OmniAuth::Builder do
       provider :github, ENV['GITHUB_KEY'], ENV['GITHUB_SECRET'], scope: 'user:email'
