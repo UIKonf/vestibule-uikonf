@@ -20,8 +20,8 @@ header {
     h1 {
       line-height: 1em;
       font-family: $alternate-font-stack;
-      font-size: 3em;
-      margin: (1.5em/3) 0 (1.5em/6) 0;
+      font-size: 2.5em;
+      margin: (1.8em/3) 0 (1.5em/6) 0;
       color: $heading-colour;
 
       a:hover {
@@ -51,7 +51,7 @@ header {
     margin-bottom: 2em;
 	
     h1 {
-      font-size: 2em;
+      font-size: 1.6em;
       line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
@@ -59,7 +59,7 @@ header {
     }
 	
 	h2 {
-      font-size: 2em;
+      font-size: 1.6em;
       line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
