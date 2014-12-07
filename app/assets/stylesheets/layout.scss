@@ -102,13 +102,6 @@ header {
 		line-height:1.2em;
 	}
 	
-	.proposals {
-		li {
-			font-size:1.2em;
-			line-height:1.2em;
-		}
-	}
-	
   }
 }
 
@@ -165,6 +158,13 @@ label {
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
+}
+
+.dashboard {
+	li {
+		font-size:1.2em;
+		line-height:1.2em;
+	}
 }
 
 #container {
