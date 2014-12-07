@@ -52,7 +52,7 @@ header {
 	
     h1 {
       font-size: 2em;
-      line-height: 1em;
+      line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
@@ -60,11 +60,16 @@ header {
 	
 	h2 {
       font-size: 2em;
-      line-height: 1em;
+      line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
+	
+	li {
+		font-size:1.2em;
+		line-height:1.2em;
+	}
   }
 }
 
