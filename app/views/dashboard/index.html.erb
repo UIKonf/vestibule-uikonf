@@ -11,7 +11,7 @@
 <p>The time for voting is over! We're collating all the selections and preparing the agenda. You can still <%= link_to 'view selections you made', selections_path %>.</p>
 <% end %>
 
-<h2>Your proposals</h2>
+<h2 style="margin-bottom:20px;">Your proposals</h2>
 <p>(Because they are anonymised, other users will not see that you are the author of these proposals. <%= link_to "Read more about anonymisation", anonymous_proposals_path %>.)</p>
 <% if @your_proposals.present? %>
   <ul id="your-proposals" class="proposals">
