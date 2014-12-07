@@ -45,7 +45,7 @@ header {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: $white;
-  background-color: $active-nav-background-colour;
+  background-color: $link-color;
 }
 
 #content {
@@ -53,8 +53,17 @@ header {
 
   h1 {
 	color: #444444;		
-    font-size: 1.6em;
-    line-height: 1.2em;
+    font-size: 1.8em;
+    line-height: 1.6em;
+    font-family: $alternate-font-stack;
+    margin: (1.5em/3) 0 (1.5em/6) 0;
+    padding: 0;
+  }
+  
+	h2 {
+	color: #444444;
+    font-size: 1.8em;
+    line-height: 1.3em;
     font-family: $alternate-font-stack;
     margin: (1.5em/3) 0 (1.5em/6) 0;
     padding: 0;
@@ -73,7 +82,7 @@ header {
     h1 {
 		color: #444444;		
       font-size: 1.6em;
-      line-height: 1.2em;
+      line-height: 1.6em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
