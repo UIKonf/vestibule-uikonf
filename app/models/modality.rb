@@ -78,8 +78,12 @@ class Modality
     [:see, :agenda],
     [:see, :selection]
   )
+  
+  InactiveRules = make_rules_for_ruleset(
+  ) 
 
   RULES = {
+    inactive: InactiveRules,
     cfp: CfpRules,
     review: ReviewRules,
     voting: VotingRules,
