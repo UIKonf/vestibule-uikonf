@@ -80,6 +80,7 @@ class Modality
   )
   
   InactiveRules = make_rules_for_ruleset(
+    [:see, :agenda]
   ) 
 
   RULES = {
