@@ -16,12 +16,16 @@ header {
 
   .brand {
     margin-bottom: 2em;
-
+	p {
+		color: #444444;
+	}
+	
     h1 {
+		
       line-height: 1em;
       font-family: $alternate-font-stack;
-      font-size: 3em;
-      margin: (1.5em/3) 0 (1.5em/6) 0;
+      font-size: 2.5em;
+      margin: (1.8em/3) 0 (1.5em/6) 0;
       color: $heading-colour;
 
       a:hover {
@@ -29,7 +33,7 @@ header {
       }
 
       a:link, a:visited {
-        color: $heading-colour;
+        color: #499DF9;
       }
     }
   }
@@ -41,30 +45,63 @@ header {
 .nav-pills > .active > a,
 .nav-pills > .active > a:hover {
   color: $white;
-  background-color: $active-nav-background-colour;
+  background-color: $link-color;
 }
 
 #content {
   margin-bottom: 4em;
 
+  h1 {
+	color: #444444;		
+    font-size: 1.8em;
+    line-height: 1.6em;
+    font-family: $alternate-font-stack;
+    margin: (1.5em/3) 0 (1.5em/6) 0;
+    padding: 0;
+  }
+  
+	h2 {
+	color: #444444;
+    font-size: 1.8em;
+    line-height: 1.3em;
+    font-family: $alternate-font-stack;
+    margin: (1.5em/3) 0 (1.5em/6) 0;
+    padding: 0;
+  }
+  
+	p {
+		color: #444444;
+        font-size: 1em;
+        line-height: 1.3em;
+	}
+
   section {
     margin-bottom: 2em;
 	
+	
     h1 {
-      font-size: 2em;
-      line-height: 1em;
+		color: #444444;		
+      font-size: 1.6em;
+      line-height: 1.6em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
 	
 	h2 {
-      font-size: 2em;
-      line-height: 1em;
+		color: #444444;
+      font-size: 1.6em;
+      line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
+	
+	li {
+		font-size:1.2em;
+		line-height:1.2em;
+	}
+	
   }
 }
 
@@ -101,22 +138,34 @@ label {
 }
 
 .the-process {
+	p {
+		color: #444444;
+	}
     h1 {
-      font-size: 2em;
-      line-height: 1em;
+		color: #444444;
+      font-size: 1.6em;
+      line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
 	
 	h2 {
-      font-size: 2em;
-      line-height: 1em;
+		color: #444444;
+      font-size: 1.6em;
+      line-height: 1.2em;
       font-family: $alternate-font-stack;
       margin: (1.5em/3) 0 (1.5em/6) 0;
       padding: 0;
     }
 }
+
+li#proposal_2.proposal {
+		font-size:1.2em;
+		line-height:1.2em;
+}
+
+
 
 #container {
   margin: 0 auto;

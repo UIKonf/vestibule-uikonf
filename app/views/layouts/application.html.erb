@@ -9,11 +9,13 @@
   <%= yield :head %>
   <%= render 'shared/analytics' %>
 </head>
-<body class="<%= body_class %>">
-  <div class="container">
-    <header>
+<body class="<%= body_class %>" style="background-color:#ffffff;">
+    <header style="margin-top:0px; background-color:#f1f2f4;">
+		<div class="container">
       <div class="row">
         <div class="span5">
+			<a href="/">
+		<img src="http://www.uikonf.com/static/images/uikonf-logo.svg" style="float:left; width:100px; height:100px; margin:10px 25px 0 0;"></a>
           <div class="brand">
             <h1><%= link_to "UIKonf 2015 Vestibule", root_path %></h1>
             <p>Building <a href="http://www.uikonf.com/">UIKonf</a> as a community</p>
@@ -47,8 +49,9 @@
           </ul>
         </div>
       </div>
+  </div>
     </header>
-
+  <div class="container">
     <div class="row">
       <div class="span12">
         <section id="notices">
