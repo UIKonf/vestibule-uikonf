@@ -1,5 +1,5 @@
 class Modality
-  MODES = %w(cfp review voting holding agenda archive)
+  MODES = %w(cfp review voting holding agenda archive inactive)
   attr_reader :mode
   def initialize(mode = :cfp)
     @mode =
