@@ -7,7 +7,7 @@ class HomeController < ApplicationController
           if Vestibule.mode_of_operation.mode == :inactive
             redirect_to about_path
           else 
-            redirect_to dashboard_path
+            redirect_to proposals_path
           end
     end
   end
