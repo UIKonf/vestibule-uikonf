@@ -6,6 +6,7 @@ class SuggestionsController < ApplicationController
     check_mode_of_operation
     @suggestion = current_user.suggestions.build(params[:suggestion].merge(:proposal => @proposal))
     if @suggestion.save
+      SuggestionsMailer.new_suggestion(@suggestion).deliver 
       redirect_to proposal_path(@proposal)
     else
       render :template => 'proposals/show'
