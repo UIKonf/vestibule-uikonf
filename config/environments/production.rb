@@ -55,8 +55,8 @@ Vestibule::Application.configure do
   config.action_mailer.smtp_settings = {
     address:              'sub4.mail.dreamhost.com',
     port:                 587,
-    user_name:            ENV['MAIL_USERNAME']
-    password:             ENV['MAIL_PASSWORD']
+    user_name:            ENV['SMTP_USERNAME'],
+    password:             ENV['SMTP_PASSWORD'],
     authentication:       'plain',
     enable_starttls_auto: true  }
   config.action_mailer.perform_deliveries = true
