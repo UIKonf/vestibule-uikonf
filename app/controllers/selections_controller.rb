@@ -16,7 +16,7 @@ class SelectionsController < ApplicationController
           session[:randomized_proposals_ids] = @proposals.map{ |p| p[:id]}   
         else 
           unsorted_proposals = Proposal.find_all_by_id(randomized_proposal_ids)
-          @proposals = randomized_proposal_ids.map { |i| unsorted_proposals[i].first }
+          @proposals = randomized_proposal_ids.map { |i| unsorted_proposals[i] }
         end
       rescue Exception => e 
         logger.debug "caught an exception:" + e.message
