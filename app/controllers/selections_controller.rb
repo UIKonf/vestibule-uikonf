@@ -8,7 +8,19 @@ class SelectionsController < ApplicationController
       @top_proposals = Selection.popular.select { |count, proposal| proposal.confirmed? }.take(8)
     end
     if current_user && can?(:make, :selection)
-      @proposals = Proposal.available_for_selection_by(current_user).shuffle
+      begin
+        randomized_proposal_ids = session[:randomized_proposals_ids]
+      
+        if randomized_proposal_ids == nil {
+          @proposals = Proposal.available_for_selection_by(current_user).shuffle  
+          session[:randomized_proposals_ids] = @proposals.map{ |p| p[:id]}   
+        else 
+          unsorted_proposals = Proposal.find_all_by_id(randomized_proposal_ids)
+          @proposals = randomized_proposal_ids.map { |i| unsorted_proposals[i].first }
+        end
+      rescue
+        @proposals = Proposal.available_for_selection_by(current_user)
+      end
     end
   end
 
