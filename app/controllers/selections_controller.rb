@@ -11,7 +11,7 @@ class SelectionsController < ApplicationController
       begin
         randomized_proposal_ids = session[:randomized_proposals_ids]
       
-        if randomized_proposal_ids == nil {
+        if randomized_proposal_ids == nil 
           @proposals = Proposal.available_for_selection_by(current_user).shuffle  
           session[:randomized_proposals_ids] = @proposals.map{ |p| p[:id]}   
         else 
