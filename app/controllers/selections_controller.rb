@@ -15,7 +15,7 @@ class SelectionsController < ApplicationController
           @proposals = Proposal.available_for_selection_by(current_user).shuffle  
           session[:randomized_proposals_ids] = @proposals.map{ |p| p[:id]}   
         else 
-          unsorted_proposals = Proposal.find_all_by_id(randomized_proposal_ids).group_by(&:id)
+          unsorted_proposals = Proposal.find_all_by_id(randomized_proposal_ids).reject { |p| Selection.where(proposal_id: p.id, user_id: user.id).exists? }.group_by(&:id)
           @proposals = randomized_proposal_ids.map { |i| unsorted_proposals[i].first }
         end
       rescue Exception => e 
