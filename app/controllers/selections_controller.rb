@@ -18,7 +18,9 @@ class SelectionsController < ApplicationController
           unsorted_proposals = Proposal.find_all_by_id(randomized_proposal_ids)
           @proposals = randomized_proposal_ids.map { |i| unsorted_proposals[i].first }
         end
-      rescue
+      rescue Exception => e 
+        logger.debug "caught an exception:" + e.message
+        logger.debug e.backtrace.inspect
         @proposals = Proposal.available_for_selection_by(current_user)
       end
     end
