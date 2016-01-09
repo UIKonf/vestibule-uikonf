@@ -1,5 +1,8 @@
 class ProposalsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter :check_mode_of_operation, except: [:index, :show]
+  before_filter :allow_one_proposal_per_user, :onyl => [:new, :create]
+  before_filter :load_proposal_for_editing, :only => [:edit, :update]
 
   respond_to :html
   respond_to :rss, :only => [:index, :show]
@@ -14,8 +17,6 @@ class ProposalsController < ApplicationController
     respond_with @proposal = Proposal.find(params[:id])
   end
 
-  before_filter :check_mode_of_operation, except: [:index, :show]
-
   def new
     @proposal = Proposal.new
   end
@@ -28,8 +29,6 @@ class ProposalsController < ApplicationController
       render :new
     end
   end
-
-  before_filter :load_proposal_for_editing, :only => [:edit, :update]
 
   def edit
   end
@@ -49,6 +48,13 @@ class ProposalsController < ApplicationController
   end
 
   private
+  
+  def allow_one_proposal_per_user
+    if current_user.proposals.count > 0
+      flash[:alert] = "You already proposed a talk. Please withdraw it first, if you'd like to propose another one."
+      redirect_to :action => :show
+    end      
+  end
 
   def load_proposal_for_editing
     @proposal = current_user.proposals.find_by_id(params[:id])
