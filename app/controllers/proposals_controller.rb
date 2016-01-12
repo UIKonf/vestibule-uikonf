@@ -1,7 +1,7 @@
 class ProposalsController < ApplicationController
   before_filter :authenticate_user!, :except => [:index, :show]
   before_filter :check_mode_of_operation, except: [:index, :show]
-  before_filter :allow_one_proposal_per_user, :onyl => [:new, :create]
+  before_filter :allow_one_proposal_per_user, :only => [:new, :create]
   before_filter :load_proposal_for_editing, :only => [:edit, :update]
 
   respond_to :html
