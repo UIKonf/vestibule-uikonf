@@ -52,7 +52,7 @@ class ProposalsController < ApplicationController
   def allow_one_proposal_per_user
     if current_user.proposals.count > 0
       flash[:alert] = "You already proposed a talk. Please withdraw it first, if you'd like to propose another one."
-      redirect_to :action => :show
+      redirect_to :action => :index
     end      
   end
 
