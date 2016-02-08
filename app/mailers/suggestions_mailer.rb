@@ -9,12 +9,11 @@ class SuggestionsMailer < ActionMailer::Base
     
     to_address = ''
     if @suggestion.proposal.proposer.email.is_a?(Hash)
-      to_address = @suggestion.proposal.proposer.email[:email]
+      to_address = @suggestion.proposal.proposer.email['email']
     else 
       to_address = @suggestion.proposal.proposer.email
     end
     
-    mail to: to_address
-         subject: "Someone just posted a suggestion on '#{@suggestion.proposal.title}'!"
+    mail to: to_address, subject: "Someone just posted a suggestion on '#{@suggestion.proposal.title}'!"
   end
 end
