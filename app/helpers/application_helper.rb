@@ -34,7 +34,7 @@ module ApplicationHelper
 
   def avatar_url(user, bigger=false)
     hash = user.anonymized_name
-    "https://robohash.org/#{hash}"
+    "https://robohash.org/#{hash}?size=100x100"
   end
 
   def markdown(text)
@@ -81,7 +81,8 @@ module ApplicationHelper
         "your"
       end
     else
-      "#{@user.name}'#{@user.name.last == 's' ? '' : 's' }"
+      name = @user.anonymized_name
+      "#{name}'#{name.last == 's' ? '' : 's' }"
     end
   end
 
