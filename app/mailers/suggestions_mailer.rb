@@ -9,7 +9,9 @@ class SuggestionsMailer < ActionMailer::Base
     
     email = @suggestion.proposal.proposer.email
     to_address =
-      if email.respond_to?(:[])
+      if email.is_a?(String)
+        to_address = email
+      elsif email.respond_to?(:[])
         to_address = email[:email]
       else 
         to_address = email
