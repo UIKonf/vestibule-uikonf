@@ -75,7 +75,7 @@ module ApplicationHelper
         "you"
       end
     else
-      @user.name
+      @user.anonymized_name
     end
   end
 

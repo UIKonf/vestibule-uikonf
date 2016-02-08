@@ -1,3 +1,5 @@
+require 'digest/hmac'
+
 class User < ActiveRecord::Base
   has_many :proposals, :foreign_key => :proposer_id
   has_many :suggestions, :foreign_key => :author_id
@@ -35,6 +37,10 @@ class User < ActiveRecord::Base
 
   def to_param
     github_nickname
+  end
+  
+  def anonymized_name
+    Digest::HMAC.hexdigest(self.name, "UIKonf2016 Rocks!", Digest::SHA1)    
   end
 
   REASON_WEIGHT = 5
