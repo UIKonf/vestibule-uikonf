@@ -31,7 +31,8 @@ class User < ActiveRecord::Base
       user.name = auth["info"]["name"] || auth['info']['nickname']
       user.github_uid = auth["uid"]
       user.github_nickname = auth["info"]["nickname"]
-      user.email = auth["info"]["email"]
+      emailObject = auth["info"]["email"]
+      user.email = (emailObject.respond_to?(:email?) && emailObject.email?) ? emailObject.email : emailObject.to_s
     end
   end
 
