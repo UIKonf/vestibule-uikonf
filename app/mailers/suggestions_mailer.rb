@@ -7,15 +7,9 @@ class SuggestionsMailer < ActionMailer::Base
   def new_suggestion(suggestion)
     @suggestion = suggestion
     
-    email = @suggestion.proposal.proposer.email
-    to_address =
-      if email.is_a?(String)
-        to_address = email
-      elsif email.respond_to?(:email) && email.email? 
-        to_address = email.email
-      else 
-        to_address = email
-      end
+    emailObject = @suggestion.proposal.proposer.email
+    
+    to_address = emailObject.email? ? emailObject.email : emailObject.to_s
     
     mail to: to_address, subject: "Someone just posted a suggestion on '#{@suggestion.proposal.title}'!"
   end
