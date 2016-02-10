@@ -9,7 +9,7 @@ class SuggestionsMailer < ActionMailer::Base
     
     emailObject = @suggestion.proposal.proposer.email
     
-    to_address = emailObject.email? ? emailObject.email : emailObject.to_s
+    to_address = (emailObject.respond_to?(:email?) && emailObject.email?) ? emailObject.email : emailObject.to_s
     
     mail to: to_address, subject: "Someone just posted a suggestion on '#{@suggestion.proposal.title}'!"
   end
