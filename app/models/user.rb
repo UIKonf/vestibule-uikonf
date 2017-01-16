@@ -41,7 +41,7 @@ class User < ActiveRecord::Base
   end
   
   def anonymized_name
-    Digest::HMAC.hexdigest(self.name, "UIKonf2016 Rocks!", Digest::SHA1)    
+    Digest::HMAC.hexdigest(self.name, "UIKonf Rocks!", Digest::SHA1)    
   end
 
   REASON_WEIGHT = 5
