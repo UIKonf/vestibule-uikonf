@@ -27,7 +27,7 @@ class ApplicationController < ActionController::Base
 
   def set_archive_mode_warning_if_required
     if Vestibule.mode_of_operation.mode == :archive
-      flash.now[:archive] = 'This version of Vestibule is <em>read only</em>. It represents an archive of the community effort to produce content for <a href="http://www.uikonf.com/">UIKonf 2017</a>.'.html_safe
+      flash.now[:archive] = 'This version of Vestibule is <em>read only</em>. It represents an archive of the community effort to produce content for <a href="http://www.uikonf.com/">UIKonf 2018</a>.'.html_safe
     end
     if Vestibule.mode_of_operation.mode == :inactive
       flash.now[:archive] = 'Vestibule is not open for proposals yet. Follow <a href="https://twitter.com/uikonf">@uikonf</a> in order to be notified when it is turned on.'.html_safe
